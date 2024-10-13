@@ -29,7 +29,7 @@ export default function Hero() {
   return (
     <main className='relative'>
       {/*first block*/}
-      <div className='container relative rounded-[79px] border-0 bg-BackgroundColor flex mx-auto overflow-hidden'>
+      <div className='w-full relative rounded-[79px] border-0 bg-BackgroundColor flex mx-auto overflow-hidden'>
         {/*LeftCorner */}
         <div className='h-fit w-auto left-0 top-0 z-10 '>
           <img src={LeftCorner} className='object-cover h-full' alt='LeftCorner'></img>
@@ -141,7 +141,7 @@ export default function Hero() {
       </div>
       {/*seventh block */}
       <div className='flex flex-col justify-center align-middle place-content-center mx-52'>
-        <div className='flex flex-row mb-10 mt-52 space-x-96'><h1 className='text-SiteName text-5xl font-bold' style={{"fontFamily":"InterRegular"}}>Common questions</h1> <button className='rounded-full text-SiteName bg-button w-28 h-12 m-0' onClick={()=>{toggleAll();}}> <p className='text-sm font-semibold' style={{"fontFamily":"InterRegular"}}> view all FAQs</p></button></div>
+        <div className='flex flex-row mb-10 mt-52'><h1 className='text-SiteName text-5xl font-bold flex-grow' style={{"fontFamily":"InterRegular"}}>Common questions</h1> <button className='rounded-full text-SiteName bg-button w-28 h-12 m-0' onClick={()=>{toggleAll();}}> <p className='text-sm font-semibold' style={{"fontFamily":"InterRegular"}}> view all FAQs</p></button></div>
         <div className='h-fit'>
         <div id="accordionExample">
       {/* Accordion Item 1 */}
@@ -309,52 +309,62 @@ export default function Hero() {
       </div>
         </div>
       </div>
-      <div className=' flex flex-row mt-32 mb-20 gap-10 place-content-center '>
-        <div className='flex flex-col justify-center items-start ml-9 space-y-3'>
-          <div className='relative w-96'>
-          <img src={bgImage} className='w-fit' alt="bgImage"></img>
-          <div className='absolute left-9 top-0'>
-          <h1 className='mt-12 text-white text-4xl w-96 font-bold' style={{"fontFamily":"InterRegular"}}>The bright side<br></br> of kidcare</h1>
-          <p className='text-white text-xl mt-6 leading-relaxed' style={{"fontFamily":"InterRegular"}}>Get reliable on demand<br/> childcare from vetted sitters<br/> in<br/> your community.</p>
-          <button className='bg-button rounded-full w-28 h-10 mt-4 font-semibold text-sm' style={{"fontFamily":"InterRegular"}}>Get Started</button>
-          </div>
-          </div>
+      {/*Last block */}
+      <div className='flex flex-col lg:flex-row mt-32 mb-20 gap-10 place-content-center px-4'>
+  <div className='flex flex-col justify-center items-start space-y-3'>
+    <div className='relative w-full lg:w-96'>
+      <img src={bgImage} className='w-full' alt="bgImage"></img>
+      <div className='absolute left-4 top-0 lg:left-9'>
+        <h1 className='mt-12 text-white text-2xl lg:text-4xl font-bold' style={{"fontFamily":"InterRegular"}}>
+          The bright side<br /> of kidcare
+        </h1>
+        <p className='text-white text-md lg:text-xl mt-6 leading-relaxed' style={{"fontFamily":"InterRegular"}}>
+          Get reliable on demand<br /> childcare from vetted sitters<br /> in<br /> your community.
+        </p>
+        <button className='bg-button rounded-full w-28 h-10 mt-4 font-semibold text-sm' style={{"fontFamily":"InterRegular"}}>
+          Get Started
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div className='w-full relative rounded-[30px] flex overflow-visible'>
+    <div className='grid grid-rows-[auto,auto] w-full space-y-3 bg-white rounded-[30px] top-0 overflow-hidden shadow-lg'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-auto text-lg font-semibold gap-5 '>
+        <div className='flex flex-col space-y-5 pt-5 pl-5'>
+          <Link to={"/"}>Parents</Link>
+          <Link to={"/"}>Sitters</Link>
+          <Link to={"/"} className='w-32'>Trust & Safety</Link>
         </div>
-        <div className='container relative rounded-[30px] flex overflow-visible'>
-          <div className='grid grid-rows-[auto,auto] w-full mr-14 space-y-3 bg-white rounded-[30px] top-0 overflow-hidden shadow-lg'>
-            <div className='grid grid-cols-[auto,auto,auto,auto] w-auto text-lg font-semibold'>
-            <div className='flex flex-col space-y-5 mt-7 ml-9'>
-              <Link to={"/"}>Parents</Link>
-              <Link to={"/"}>Sitters</Link>
-              <Link to={"/"} className='w-32'>Trust & Safety</Link>
-            </div>
-            <div className='flex flex-col mt-7 space-y-5 ml-9'>
-              <Link to={"/"}>FAQ</Link>
-              <Link to={"/"}>Careers</Link>
-              <Link to={"/"}>Blog</Link>
-              <Link to={"/"}>Contact</Link>
-            </div>
-            <div className='flex flex-col mt-7 space-y-5 ml-9'>
-              <Link to={"/"}>Instagram</Link>
-              <Link to={"/"}>Facebook</Link>
-              <Link to={"/"}>Twitter</Link>
-              <Link to={"/"}>Linkedin</Link>
-            </div>
-            <div className='ml-auto'>
-              <img src={todder} alt='logo'></img>
-            </div>
-          </div>
-          <div className='grid grid-cols-[2fr,auto] mx-9 text-lg font-semibold' style={{"fontFamily":"InterRegular"}}>
-            <div>
-              <h1>2023 With Todder Inc.</h1>
-            </div>
-            <div>
-              <h1>Terms of Use <span className='text-xs'>●</span> Privacy Policy</h1>
-            </div>
-          </div>
+        <div className='flex flex-col space-y-5 pt-5'>
+          <Link to={"/"}>FAQ</Link>
+          <Link to={"/"}>Careers</Link>
+          <Link to={"/"}>Blog</Link>
+          <Link to={"/"}>Contact</Link>
         </div>
+        <div className='flex flex-col space-y-5 pt-5'>
+          <Link to={"/"}>Instagram</Link>
+          <Link to={"/"}>Facebook</Link>
+          <Link to={"/"}>Twitter</Link>
+          <Link to={"/"}>LinkedIn</Link>
         </div>
+        <div className='flex justify-center lg:justify-end'>
+          <img src={todder} alt='logo' className='w-full' />
         </div>
+      </div>
+
+      <div className='grid grid-cols-1 sm:grid-cols-2 gap-5 text-lg font-semibold p-5' style={{"fontFamily":"InterRegular"}}>
+        <div>
+          <h1>2023 With Todder Inc.</h1>
+        </div>
+        <div className='text-sm flex justify-center sm:justify-end'>
+          <h1>Terms of Use <span className='text-xs'>●</span> Privacy Policy</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
     </main>
   )
 }
