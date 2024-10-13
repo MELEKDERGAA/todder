@@ -6,7 +6,7 @@ function App() {
   return (
     
       <Router>
-        <div className="min-h-screen flex flex-col relative bg-slate ">
+        <div className="min-h-screen w-full flex flex-col relative bg-slate ">
           <NavBar></NavBar>
           <Routes>
             <Route path='/' element={<LandingPage/>}></Route>

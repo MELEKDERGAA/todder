@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Pause, Play } from 'lucide-react';
 import Frobes from "../image/Forbes.png";
 import Parents from "../image/Parents.png";
 import MOM from "../image/MOM.png";
@@ -13,11 +12,7 @@ const images = [
 ];
 
 export default function AutoScrollInfiniteImages() {
-  const [isPaused, setIsPaused] = useState(false);
 
-  const togglePause = () => {
-    setIsPaused(!isPaused);
-  };
 
   return (
         
@@ -43,7 +38,7 @@ export default function AutoScrollInfiniteImages() {
             >
               <img
                 src={src}
-                alt={`Image ${index + 1}`}
+                alt={` ${index + 1}`}
                 className="w-full h-auto object-cover"
               />
             </div>

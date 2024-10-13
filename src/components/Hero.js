@@ -12,15 +12,20 @@ import RightCard from "../image/RightCard.png"
 import BottomLeft from "../image/BottomLeft.png"
 import BottomRight from "../image/BottomRight.png"
 import plus from "../image/Frame 35.png"
+// eslint-disable-next-line
 import todder from "../image/todder.png"
-import bgImage from "../image/Frame 40 (1).png"
+import bgImage from "../image/Frame 40 .png"
 export default function Hero() {
-  const [activeIndex, setActiveIndex] = useState(null);
 
-  const [openAccordion, setOpenAccordion] = useState(1); // Keeps track of the currently open accordion
+  const [openAccordion, setOpenAccordion] = useState([1]); // Keeps track of the currently open accordion
+  const [ViewAll, setViewAll]=useState(false);
 
   const toggleAccordion = (index) => {
-    setOpenAccordion(openAccordion === index ? -1 : index);}
+    setOpenAccordion([openAccordion,openAccordion.includes(index) ? -1 : index]);}
+    const toggleAll = () => {
+      setViewAll(!ViewAll);
+      ViewAll===true?setOpenAccordion([1,2,3,4,5]):setOpenAccordion([1]);
+    }
   return (
     <main className='relative'>
       {/*first block*/}
@@ -48,7 +53,7 @@ export default function Hero() {
           <h1 style={{"fontFamily":'InterRegular'}} className='text-xl text-SiteName'>how it work</h1>
           <h5 style={{"fontFamily":'InterRegular'}} className='font-semibold text-7xl text-SiteName'>We help  families find reliable,<br></br> flexible kidcare</h5>
           <p style={{"fontFamily":'InterRegular'}} className='text-3xl text-SiteName'>We’ll  match you with sitters based on your family’s needs and their availability</p>
-          <div><button className='rounded-full text-SiteName bg-white w-24 h-9 m-0 shadow-lg relative' style={{"fontFamily":'InterRegular'}}><img src={point} className='absolute mt-2 ml-3 w-1/12'></img><p className='ml-3'>Sign up</p></button></div>
+          <div><button className='rounded-full text-SiteName bg-white w-24 h-9 m-0 shadow-lg relative' style={{"fontFamily":'InterRegular'}}><img src={point} className='absolute mt-2 ml-3 w-1/12' alt="point"></img><p className='ml-3'>Sign up</p></button></div>
           <div><button className='rounded-full text-SiteName bg-white w-28 h-9 m-0 shadow-lg' style={{"fontFamily":'InterRegular'}}><p>Book a sitter</p></button></div>
           <div><button className='rounded-full text-SiteName bg-white w-36 h-9 m-0 shadow-lg' style={{"fontFamily":'InterRegular'}}><p>Get a care & pay</p></button></div>
         </div>
@@ -136,27 +141,27 @@ export default function Hero() {
       </div>
       {/*seventh block */}
       <div className='flex flex-col justify-center align-middle place-content-center mx-52'>
-        <div className='flex flex-row mb-10 mt-52'><h1 className='text-SiteName text-5xl font-bold' style={{"fontFamily":"InterRegular"}}>Common questions</h1> <button><h1></h1></button></div>
+        <div className='flex flex-row mb-10 mt-52 space-x-96'><h1 className='text-SiteName text-5xl font-bold' style={{"fontFamily":"InterRegular"}}>Common questions</h1> <button className='rounded-full text-SiteName bg-button w-28 h-12 m-0' onClick={()=>{toggleAll();}}> <p className='text-sm font-semibold' style={{"fontFamily":"InterRegular"}}> view all FAQs</p></button></div>
         <div className='h-fit'>
         <div id="accordionExample">
       {/* Accordion Item 1 */}
-      <div className={`rounded-full bg-white mb-5 overflow-hidden ${openAccordion===1?"h-32 rounded-[45px]":"h-20 rounded-full"}  place-content-center`}>
+      <div className={` shadow-lg bg-white mb-5 overflow-hidden ${openAccordion.includes(1)?"h-fit rounded-[35px]":"h-20 rounded-full"}  place-content-center`}>
         <h2 className="mb-0 mx-3" id="headingOne">
           <button
             className={`group relative flex w-full text-SiteName font-semibold items-center rounded-t-lg border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-body-dark dark:text-white ${
-              openAccordion === 1
+              openAccordion.includes(1)
                 ? 'bg-white text-primary shadow-border-b dark:bg-surface-dark dark:text-primary dark:shadow-white/10'
                 : ''
             }`}
             type="button"
             onClick={() => toggleAccordion(1)}
-            aria-expanded={openAccordion === 1}
+            aria-expanded={openAccordion.includes(1)}
             aria-controls="collapseOne"
           >
             What is Todder?
             <span
-              className={`-me-1 ms-auto h-9 w-9 shrink-0 rotate-[-180deg] transition-transform duration-200 ease-in-out ${
-                openAccordion !== 1 ? 'rotate-0' : ''
+              className={`-me-1 ms-auto h-9 w-9 shrink-0 transition-transform duration-200 ease-in-out ${
+                !openAccordion.includes(1) ? 'rotate-0' : 'rotate-45'
               }`}
             >
               <img src={plus} className='w-full h-full' alt='plus'></img>
@@ -165,7 +170,7 @@ export default function Hero() {
         </h2>
         <div
           id="collapseOne"
-          className={`px-5 py-4 ${openAccordion === 1 ? '!visible' : 'hidden'} mx-3`}
+          className={`px-5 py-4 ${openAccordion.includes(1) ? '!visible' : 'hidden'} mx-3`}
           aria-labelledby="headingOne"
         >
           <strong>This is the first item's accordion body.</strong> It is shown by default...
@@ -173,32 +178,32 @@ export default function Hero() {
       </div>
 
       {/* Accordion Item 2 */}
-      <div className={`rounded-full bg-white mb-5 overflow-hidden ${openAccordion===2?"h-32 rounded-[45px]":"h-20 rounded-full"}  place-content-center`}>
+      <div className={`shadow-lg bg-white mb-5 overflow-hidden ${openAccordion.includes (2)?"h-fit rounded-[35px]":"h-20 rounded-full"}  place-content-center`}>
         <h2 className="mb-0 mx-3" id="headingTwo">
           <button
             className={`group relative flex w-full text-SiteName font-semibold items-center border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-body-dark dark:text-white ${
-              openAccordion === 2
+              openAccordion.includes (2)
                 ? 'bg-white text-primary shadow-border-b dark:bg-surface-dark dark:text-primary dark:shadow-white/10'
                 : ''
             }`}
             type="button"
             onClick={() => toggleAccordion(2)}
-            aria-expanded={openAccordion === 2}
+            aria-expanded={openAccordion.includes (2)}
             aria-controls="collapseTwo"
           >
             How is Todder different from other childecare options?
             <span
-              className={`-me-1 ms-auto h-9 w-9 shrink-0 rotate-[-180deg] transition-transform duration-200 ease-in-out ${
-                openAccordion !== 2 ? 'rotate-0' : ''
+              className={`-me-1 ms-auto h-9 w-9 shrink-0 transition-transform duration-200 ease-in-out ${
+                !openAccordion.includes (2) ? 'rotate-0' : 'rotate-45'
               }`}
             >
-              <img src={plus} className='w-full h-full'></img>
+              <img src={plus} className='w-full h-full' alt='plus'></img>
             </span>
           </button>
         </h2>
         <div
           id="collapseTwo"
-          className={`px-5 py-4 ${openAccordion === 2 ? '!visible' : 'hidden'} mx-3`}
+          className={`px-5 py-4 ${openAccordion.includes (2) ? '!visible' : 'hidden'} mx-3`}
           aria-labelledby="headingTwo"
         >
           <strong>This is the second item's accordion body.</strong> It is hidden by default...
@@ -206,23 +211,23 @@ export default function Hero() {
       </div>
 
       {/* Accordion Item 3 */}
-      <div className={`rounded-full bg-white mb-5 overflow-hidden ${openAccordion===3?"h-32 rounded-[45px]":"h-20 rounded-full"}  place-content-center`}>
+      <div className={`shadow-lg bg-white mb-5 overflow-hidden ${openAccordion.includes (3)?"h-fit rounded-[35px]":"h-20 rounded-full"}  place-content-center`}>
         <h2 className="mb-0 mx-3" id="headingThree">
           <button
             className={`group relative flex w-full text-SiteName font-semibold items-center border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-body-dark dark:text-white ${
-              openAccordion === 3
+              openAccordion.includes (3)
                 ? 'bg-white text-primary shadow-border-b dark:bg-surface-dark dark:text-primary dark:shadow-white/10'
                 : ''
             }`}
             type="button"
             onClick={() => toggleAccordion(3)}
-            aria-expanded={openAccordion === 3}
+            aria-expanded={openAccordion.includes (3)}
             aria-controls="collapseThree"
           >
             Does Todder offer last-minute backup care?
             <span
-              className={`-me-1 ms-auto h-9 w-9 shrink-0 rotate-[-180deg] transition-transform duration-200 ease-in-out ${
-                openAccordion !== 3 ? 'rotate-0' : ''
+              className={`-me-1 ms-auto h-9 w-9 shrink-0  transition-transform duration-200 ease-in-out ${
+                !openAccordion.includes (3) ? 'rotate-0' : 'rotate-45'
               }`}
             >
               <img src={plus} className='w-full h-full' alt='plus'></img>
@@ -231,30 +236,30 @@ export default function Hero() {
         </h2>
         <div
           id="collapseThree"
-          className={`px-5 py-4 ${openAccordion === 3 ? '!visible' : 'hidden'} mx-3`}
+          className={`px-5 py-4 ${openAccordion.includes (3) ? '!visible' : 'hidden'} mx-3`}
           aria-labelledby="headingThree"
         >
           <strong>This is the third item's accordion body.</strong> It is hidden by default...
         </div>
       </div>
       {/* Accordion Item 4 */}
-      <div className={`rounded-full bg-white mb-5 overflow-hidden ${openAccordion===4?"h-32 rounded-[45px]":"h-20 rounded-full"}  place-content-center`}>
+      <div className={`shadow-lg bg-white mb-5 overflow-hidden ${openAccordion.includes (4)?"h-fit rounded-[35px]":"h-20 rounded-full"}  place-content-center`}>
         <h2 className="mb-0 mx-3" id="headingThree">
           <button
             className={`group relative flex w-full text-SiteName font-semibold items-center border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-body-dark dark:text-white ${
-              openAccordion === 4
+              openAccordion.includes (4)
                 ? 'bg-white text-primary shadow-border-b dark:bg-surface-dark dark:text-primary dark:shadow-white/10'
                 : ''
             }`}
             type="button"
             onClick={() => toggleAccordion(4)}
-            aria-expanded={openAccordion === 4}
+            aria-expanded={openAccordion.includes (4)}
             aria-controls="collapseThree"
           >
             How are Todders sitters vetted?
             <span
-              className={`-me-1 ms-auto h-9 w-9 shrink-0 rotate-[-180deg] transition-transform duration-200 ease-in-out ${
-                openAccordion !== 4 ? 'rotate-0' : ''
+              className={`-me-1 ms-auto h-9 w-9 shrink-0 transition-transform duration-200 ease-in-out ${
+                !openAccordion.includes (4) ? 'rotate-0' : 'rotate-45'
               }`}
             >
               <img src={plus} className='w-full h-full' alt='plus'></img>
@@ -263,45 +268,45 @@ export default function Hero() {
         </h2>
         <div
           id="collapseThree"
-          className={`px-5 py-4 ${openAccordion === 4 ? '!visible' : 'hidden'} mx-3`}
+          className={`px-5 py-4 ${openAccordion.includes (4) ? '!visible' : 'hidden'} mx-3`}
           aria-labelledby="headingThree"
         >
           <strong>This is the third item's accordion body.</strong> It is hidden by default...
         </div>
       </div>
       {/* Accordion Item 5 */}
-      <div className={`rounded-full bg-white mb-5 overflow-hidden ${openAccordion===5?"h-32 rounded-[45px]":"h-20 rounded-full"}  place-content-center`}>
+      <div className={`shadow-lg bg-white mb-5 overflow-hidden ${openAccordion.includes (5)?"h-fit rounded-[35px]":"h-20 rounded-full"}  place-content-center`}>
         <h2 className="mb-0 mx-3" id="headingThree">
           <button
             className={`group relative flex w-full text-SiteName font-semibold items-center border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-body-dark dark:text-white ${
-              openAccordion === 5
+              openAccordion.includes (5)
                 ? 'bg-white text-primary shadow-border-b dark:bg-surface-dark dark:text-primary dark:shadow-white/10'
                 : ''
             }`}
             type="button"
             onClick={() => toggleAccordion(5)}
-            aria-expanded={openAccordion === 5}
+            aria-expanded={openAccordion.includes (5)}
             aria-controls="collapseThree"
           >
             Where is Todder available?
             <span
-              className={`-me-1 ms-auto h-9 w-9 shrink-0 rotate-[-180deg] transition-transform duration-200 ease-in-out ${
-                openAccordion !== 5 ? 'rotate-0' : ''
+              className={`-me-1 ms-auto h-9 w-9 shrink-0 transition-transform duration-200 ease-in-out ${
+                !openAccordion.includes (5) ? 'rotate-0' : 'rotate-45'
               }`}
             >
-              <img src={plus} className='w-full h-full'></img>
+              <img src={plus} className='w-full h-full' alt='plus'></img>
             </span>
           </button>
         </h2>
         <div
           id="collapseThree"
-          className={`px-5 py-4 ${openAccordion === 5 ? '!visible' : 'hidden'} mx-3`}
+          className={`px-5 py-4 ${openAccordion.includes (5) ? '!visible' : 'hidden'} mx-3`}
           aria-labelledby="headingThree"
         >
           <strong>This is the third item's accordion body.</strong> It is hidden by default...
         </div>
       </div>
-    </div>
+      </div>
         </div>
       </div>
       <div className=' flex flex-row mt-32 mb-20 gap-10 place-content-center '>

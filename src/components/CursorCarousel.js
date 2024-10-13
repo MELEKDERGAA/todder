@@ -8,8 +8,6 @@ const Carousel = () => {
   const [currentTranslate, setCurrentTranslate] = useState(0);
   const [prevTranslate, setPrevTranslate] = useState(0);
   const carouselRef = useRef(null);
-  const itemWidth = 300; // Width of each item
-  const visibleItems = 2; // Number of visible items
 
   useEffect(() => {
     // Center the first item initially
