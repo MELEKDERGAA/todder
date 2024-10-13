@@ -29,7 +29,7 @@ export default function Hero() {
   return (
     <main className='relative'>
       {/*first block*/}
-      <div className='container relative rounded-[79px] border-0 bg-BackgroundColor mx-auto flex overflow-hidden'>
+      <div className='full relative rounded-[79px] border-0 bg-BackgroundColor mx-9 flex overflow-hidden'>
         {/*LeftCorner */}
         <div className='h-fit w-auto left-0 top-0 z-10 '>
           <img src={LeftCorner} className='object-cover h-full' alt='LeftCorner'></img>
@@ -125,22 +125,22 @@ export default function Hero() {
               </div>
             </div>
           </div>
-          <div className='flex flex-row justify-center align-middle bg-white mx-auto mt-16 rounded-[40px] overflow-hidden shadow-lg'>
-            <div className='place-content-center'>
-              <img src={BottomLeft} className='mx-14 w-56' alt='BottomLeft'></img>
+          <div className='grid grid-cols-[0.44fr,0.5fr,0.44fr] justify-center align-middle bg-white mx-auto mt-16 rounded-[40px] overflow-hidden shadow-lg'>
+            <div className='place-content-center self-center justify-self-center'>
+              <img src={BottomLeft} className=' w-56' alt='BottomLeft'></img>
             </div>
-            <div className='text-center place-content-center w-[234px]'>
+            <div className='text-center place-content-center'>
               <h1 className='text-3xl text-SiteName font-semibold mb-6' style={{"fontFamily":"InterRegular"}}>In a Pinch</h1>
               <p className='text-sm text-SiteName' style={{"fontFamily":"InterRegular"}}>Emergency? Sick nanny? No problem, we can help! We can fill requests with as little as two hours' notice.</p>
             </div>
-            <div className='place-content-center'>
-              <img src={BottomRight} className='mx-14 w-56' alt='BottomRight'></img>
+            <div className='place-content-center self-center justify-self-center'>
+              <img src={BottomRight} className=' w-56' alt='BottomRight'></img>
             </div>
           </div>
         </div>
       </div>
       {/*seventh block */}
-      <div className='flex flex-col justify-center align-middle place-content-center mx-52'>
+      <div className='flex flex-col justify-center align-middle place-content-center mx-auto w-1/2'>
         <div className='flex flex-row mb-10 mt-52'><h1 className='text-SiteName text-5xl font-bold flex-grow' style={{"fontFamily":"InterRegular"}}>Common questions</h1> <button className='rounded-full text-SiteName bg-button w-28 h-12 m-0' onClick={()=>{toggleAll();}}> <p className='text-sm font-semibold' style={{"fontFamily":"InterRegular"}}> view all FAQs</p></button></div>
         <div className='h-fit'>
         <div id="accordionExample">
@@ -330,7 +330,7 @@ export default function Hero() {
 
   <div className='w-full relative rounded-[30px] flex overflow-visible'>
     <div className='grid grid-rows-[auto,auto] w-full space-y-3 bg-white rounded-[30px] top-0 overflow-hidden shadow-lg'>
-      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-auto text-lg font-semibold gap-5 '>
+      <div className='grid grid-cols-1 sm:grid-cols-[1fr,auto] md:grid-cols-[auto,auto,auto] lg:grid-cols-[1fr,1fr,1fr,auto] w-full text-lg font-semibold gap-5 '>
         <div className='flex flex-col space-y-5 pt-5 pl-5'>
           <Link to={"/"}>Parents</Link>
           <Link to={"/"}>Sitters</Link>
