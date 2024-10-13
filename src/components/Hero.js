@@ -29,7 +29,7 @@ export default function Hero() {
   return (
     <main className='relative'>
       {/*first block*/}
-      <div className='w-full relative rounded-[79px] border-0 bg-BackgroundColor flex mx-auto overflow-hidden'>
+      <div className='container relative rounded-[79px] border-0 bg-BackgroundColor mx-auto flex overflow-hidden'>
         {/*LeftCorner */}
         <div className='h-fit w-auto left-0 top-0 z-10 '>
           <img src={LeftCorner} className='object-cover h-full' alt='LeftCorner'></img>
