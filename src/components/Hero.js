@@ -1,4 +1,6 @@
 import React from 'react'
+import { useState } from 'react'
+import {Link} from 'react-router-dom'
 import LeftCorner from "../image/Left corner.png"
 import RightCorner from "../image/Right corner.png"
 import FatherKid from "../image/FatherKid.png"
@@ -9,18 +11,27 @@ import LeftCard from "../image/LeftCard.png"
 import RightCard from "../image/RightCard.png"
 import BottomLeft from "../image/BottomLeft.png"
 import BottomRight from "../image/BottomRight.png"
+import plus from "../image/Frame 35.png"
+import todder from "../image/todder.png"
+import bgImage from "../image/Frame 40 (1).png"
 export default function Hero() {
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const [openAccordion, setOpenAccordion] = useState(1); // Keeps track of the currently open accordion
+
+  const toggleAccordion = (index) => {
+    setOpenAccordion(openAccordion === index ? -1 : index);}
   return (
     <main className='relative'>
       {/*first block*/}
       <div className='container relative rounded-[79px] border-0 bg-BackgroundColor flex mx-auto overflow-hidden'>
         {/*LeftCorner */}
         <div className='h-fit w-auto left-0 top-0 z-10 '>
-          <img src={LeftCorner} className='object-cover h-full'></img>
+          <img src={LeftCorner} className='object-cover h-full' alt='LeftCorner'></img>
         </div>
         {/*RightCorner */}
         <div className='h-fit w-auto right-0 top-0 absolute z-10'>
-          <img src={RightCorner} className='object-cover h-full'></img>
+          <img src={RightCorner} className='object-cover h-full' alt='RightCorner'></img>
         </div>
         
       </div>
@@ -96,7 +107,7 @@ export default function Hero() {
                 <p className='text-SiteName text-sm'>Look at you being so ahead of the game. We can book childcare up to a month outwe look forward to seeing you then.</p>
               </div>
               <div className='justify-center align-middle place-content-center'>
-                <img src={LeftCard} className='w-56'></img>
+                <img src={LeftCard} className='w-56' alt='LeftCard'></img>
               </div>
             </div>
             <div className='bg-white inline-grid grid-cols-[auto,auto] relative rounded-[40px] overflow-hidden shadow-lg'>
@@ -105,24 +116,240 @@ export default function Hero() {
                 <p className='text-SiteName text-sm'>Nothing should get in the way of the time you spend together, without  your kids, Our sitters make date night easy to pull off.</p>
               </div>
               <div className='justify-center align-middle place-content-center overflow-hidden'>
-                <img src={RightCard} className='w-56'></img>
+                <img src={RightCard} className='w-56' alt='RightCard'></img>
               </div>
             </div>
           </div>
           <div className='flex flex-row justify-center align-middle bg-white mx-auto mt-16 rounded-[40px] overflow-hidden shadow-lg'>
             <div className='place-content-center'>
-              <img src={BottomLeft} className='mx-14 w-56'></img>
+              <img src={BottomLeft} className='mx-14 w-56' alt='BottomLeft'></img>
             </div>
             <div className='text-center place-content-center w-[234px]'>
               <h1 className='text-3xl text-SiteName font-semibold mb-6' style={{"fontFamily":"InterRegular"}}>In a Pinch</h1>
               <p className='text-sm text-SiteName' style={{"fontFamily":"InterRegular"}}>Emergency? Sick nanny? No problem, we can help! We can fill requests with as little as two hours' notice.</p>
             </div>
             <div className='place-content-center'>
-              <img src={BottomRight} className='mx-14 w-56'></img>
+              <img src={BottomRight} className='mx-14 w-56' alt='BottomRight'></img>
             </div>
           </div>
         </div>
       </div>
+      {/*seventh block */}
+      <div className='flex flex-col justify-center align-middle place-content-center mx-52'>
+        <div className='flex flex-row mb-10 mt-52'><h1 className='text-SiteName text-5xl font-bold' style={{"fontFamily":"InterRegular"}}>Common questions</h1> <button><h1></h1></button></div>
+        <div className='h-fit'>
+        <div id="accordionExample">
+      {/* Accordion Item 1 */}
+      <div className={`rounded-full bg-white mb-5 overflow-hidden ${openAccordion===1?"h-32 rounded-[45px]":"h-20 rounded-full"}  place-content-center`}>
+        <h2 className="mb-0 mx-3" id="headingOne">
+          <button
+            className={`group relative flex w-full text-SiteName font-semibold items-center rounded-t-lg border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-body-dark dark:text-white ${
+              openAccordion === 1
+                ? 'bg-white text-primary shadow-border-b dark:bg-surface-dark dark:text-primary dark:shadow-white/10'
+                : ''
+            }`}
+            type="button"
+            onClick={() => toggleAccordion(1)}
+            aria-expanded={openAccordion === 1}
+            aria-controls="collapseOne"
+          >
+            What is Todder?
+            <span
+              className={`-me-1 ms-auto h-9 w-9 shrink-0 rotate-[-180deg] transition-transform duration-200 ease-in-out ${
+                openAccordion !== 1 ? 'rotate-0' : ''
+              }`}
+            >
+              <img src={plus} className='w-full h-full' alt='plus'></img>
+            </span>
+          </button>
+        </h2>
+        <div
+          id="collapseOne"
+          className={`px-5 py-4 ${openAccordion === 1 ? '!visible' : 'hidden'} mx-3`}
+          aria-labelledby="headingOne"
+        >
+          <strong>This is the first item's accordion body.</strong> It is shown by default...
+        </div>
+      </div>
+
+      {/* Accordion Item 2 */}
+      <div className={`rounded-full bg-white mb-5 overflow-hidden ${openAccordion===2?"h-32 rounded-[45px]":"h-20 rounded-full"}  place-content-center`}>
+        <h2 className="mb-0 mx-3" id="headingTwo">
+          <button
+            className={`group relative flex w-full text-SiteName font-semibold items-center border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-body-dark dark:text-white ${
+              openAccordion === 2
+                ? 'bg-white text-primary shadow-border-b dark:bg-surface-dark dark:text-primary dark:shadow-white/10'
+                : ''
+            }`}
+            type="button"
+            onClick={() => toggleAccordion(2)}
+            aria-expanded={openAccordion === 2}
+            aria-controls="collapseTwo"
+          >
+            How is Todder different from other childecare options?
+            <span
+              className={`-me-1 ms-auto h-9 w-9 shrink-0 rotate-[-180deg] transition-transform duration-200 ease-in-out ${
+                openAccordion !== 2 ? 'rotate-0' : ''
+              }`}
+            >
+              <img src={plus} className='w-full h-full'></img>
+            </span>
+          </button>
+        </h2>
+        <div
+          id="collapseTwo"
+          className={`px-5 py-4 ${openAccordion === 2 ? '!visible' : 'hidden'} mx-3`}
+          aria-labelledby="headingTwo"
+        >
+          <strong>This is the second item's accordion body.</strong> It is hidden by default...
+        </div>
+      </div>
+
+      {/* Accordion Item 3 */}
+      <div className={`rounded-full bg-white mb-5 overflow-hidden ${openAccordion===3?"h-32 rounded-[45px]":"h-20 rounded-full"}  place-content-center`}>
+        <h2 className="mb-0 mx-3" id="headingThree">
+          <button
+            className={`group relative flex w-full text-SiteName font-semibold items-center border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-body-dark dark:text-white ${
+              openAccordion === 3
+                ? 'bg-white text-primary shadow-border-b dark:bg-surface-dark dark:text-primary dark:shadow-white/10'
+                : ''
+            }`}
+            type="button"
+            onClick={() => toggleAccordion(3)}
+            aria-expanded={openAccordion === 3}
+            aria-controls="collapseThree"
+          >
+            Does Todder offer last-minute backup care?
+            <span
+              className={`-me-1 ms-auto h-9 w-9 shrink-0 rotate-[-180deg] transition-transform duration-200 ease-in-out ${
+                openAccordion !== 3 ? 'rotate-0' : ''
+              }`}
+            >
+              <img src={plus} className='w-full h-full' alt='plus'></img>
+            </span>
+          </button>
+        </h2>
+        <div
+          id="collapseThree"
+          className={`px-5 py-4 ${openAccordion === 3 ? '!visible' : 'hidden'} mx-3`}
+          aria-labelledby="headingThree"
+        >
+          <strong>This is the third item's accordion body.</strong> It is hidden by default...
+        </div>
+      </div>
+      {/* Accordion Item 4 */}
+      <div className={`rounded-full bg-white mb-5 overflow-hidden ${openAccordion===4?"h-32 rounded-[45px]":"h-20 rounded-full"}  place-content-center`}>
+        <h2 className="mb-0 mx-3" id="headingThree">
+          <button
+            className={`group relative flex w-full text-SiteName font-semibold items-center border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-body-dark dark:text-white ${
+              openAccordion === 4
+                ? 'bg-white text-primary shadow-border-b dark:bg-surface-dark dark:text-primary dark:shadow-white/10'
+                : ''
+            }`}
+            type="button"
+            onClick={() => toggleAccordion(4)}
+            aria-expanded={openAccordion === 4}
+            aria-controls="collapseThree"
+          >
+            How are Todders sitters vetted?
+            <span
+              className={`-me-1 ms-auto h-9 w-9 shrink-0 rotate-[-180deg] transition-transform duration-200 ease-in-out ${
+                openAccordion !== 4 ? 'rotate-0' : ''
+              }`}
+            >
+              <img src={plus} className='w-full h-full' alt='plus'></img>
+            </span>
+          </button>
+        </h2>
+        <div
+          id="collapseThree"
+          className={`px-5 py-4 ${openAccordion === 4 ? '!visible' : 'hidden'} mx-3`}
+          aria-labelledby="headingThree"
+        >
+          <strong>This is the third item's accordion body.</strong> It is hidden by default...
+        </div>
+      </div>
+      {/* Accordion Item 5 */}
+      <div className={`rounded-full bg-white mb-5 overflow-hidden ${openAccordion===5?"h-32 rounded-[45px]":"h-20 rounded-full"}  place-content-center`}>
+        <h2 className="mb-0 mx-3" id="headingThree">
+          <button
+            className={`group relative flex w-full text-SiteName font-semibold items-center border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-body-dark dark:text-white ${
+              openAccordion === 5
+                ? 'bg-white text-primary shadow-border-b dark:bg-surface-dark dark:text-primary dark:shadow-white/10'
+                : ''
+            }`}
+            type="button"
+            onClick={() => toggleAccordion(5)}
+            aria-expanded={openAccordion === 5}
+            aria-controls="collapseThree"
+          >
+            Where is Todder available?
+            <span
+              className={`-me-1 ms-auto h-9 w-9 shrink-0 rotate-[-180deg] transition-transform duration-200 ease-in-out ${
+                openAccordion !== 5 ? 'rotate-0' : ''
+              }`}
+            >
+              <img src={plus} className='w-full h-full'></img>
+            </span>
+          </button>
+        </h2>
+        <div
+          id="collapseThree"
+          className={`px-5 py-4 ${openAccordion === 5 ? '!visible' : 'hidden'} mx-3`}
+          aria-labelledby="headingThree"
+        >
+          <strong>This is the third item's accordion body.</strong> It is hidden by default...
+        </div>
+      </div>
+    </div>
+        </div>
+      </div>
+      <div className=' flex flex-row mt-32 mb-20 gap-10 place-content-center '>
+        <div className='flex flex-col justify-center items-start ml-9 space-y-3'>
+          <div className='relative w-96'>
+          <img src={bgImage} className='w-fit' alt="bgImage"></img>
+          <div className='absolute left-9 top-0'>
+          <h1 className='mt-12 text-white text-4xl w-96 font-bold' style={{"fontFamily":"InterRegular"}}>The bright side<br></br> of kidcare</h1>
+          <p className='text-white text-xl mt-6 leading-relaxed' style={{"fontFamily":"InterRegular"}}>Get reliable on demand<br/> childcare from vetted sitters<br/> in<br/> your community.</p>
+          <button className='bg-button rounded-full w-28 h-10 mt-4 font-semibold text-sm' style={{"fontFamily":"InterRegular"}}>Get Started</button>
+          </div>
+          </div>
+        </div>
+        <div className='container relative rounded-[30px] flex overflow-visible'>
+          <div className='grid grid-rows-[auto,auto] w-full mr-14 space-y-3 bg-white rounded-[30px] top-0 overflow-hidden shadow-lg'>
+            <div className='grid grid-cols-[auto,auto,auto,auto] w-auto text-lg font-semibold'>
+            <div className='flex flex-col space-y-5 mt-7 ml-9'>
+              <Link to={"/"}>Parents</Link>
+              <Link to={"/"}>Sitters</Link>
+              <Link to={"/"} className='w-32'>Trust & Safety</Link>
+            </div>
+            <div className='flex flex-col mt-7 space-y-5 ml-9'>
+              <Link to={"/"}>FAQ</Link>
+              <Link to={"/"}>Careers</Link>
+              <Link to={"/"}>Blog</Link>
+              <Link to={"/"}>Contact</Link>
+            </div>
+            <div className='flex flex-col mt-7 space-y-5 ml-9'>
+              <Link to={"/"}>Instagram</Link>
+              <Link to={"/"}>Facebook</Link>
+              <Link to={"/"}>Twitter</Link>
+              <Link to={"/"}>Linkedin</Link>
+            </div>
+            <div className='ml-auto'>
+              <img src={todder} alt='logo'></img>
+            </div>
+          </div>
+          <div className='grid grid-cols-[2fr,auto] mx-9 text-lg font-semibold' style={{"fontFamily":"InterRegular"}}>
+            <div>
+              <h1>2023 With Todder Inc.</h1>
+            </div>
+            <div>
+              <h1>Terms of Use <span className='text-xs'>●</span> Privacy Policy</h1>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
     </main>
   )
 }
